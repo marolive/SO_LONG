@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_so_long.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 22:56:39 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/21 23:32:15 by marolive         ###   ########.fr       */
+/*   Created: 2022/07/12 16:55:10 by marolive          #+#    #+#             */
+/*   Updated: 2022/09/24 18:03:28 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int close_esc(int keycode, t_data *window)
+int	ft_putnbr_u(unsigned int n)
 {
-	if (keycode == 53)
+	int		len;
+
+	len = 0;
+	if (n >= 10)
 	{
-		mlx_destroy_window(window->mlx, window->win);
-		exit(0);
+		len += ft_putnbr_u(n / 10);
+		len += ft_putnbr_u(n % 10);
 	}
-	return (0);
-}
-int close_x(void)
-{
-	exit(0);
-	return(0);
+	else
+		len += ft_putchar(48 + n);
+	return (len);
 }

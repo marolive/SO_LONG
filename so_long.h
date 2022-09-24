@@ -31,9 +31,11 @@ typedef struct s_data
 	int		img_height;
 }			t_data;
 
-int	close_esc(int keycode, t_data *window);
-int	close_x(void);
-int len_map(t_data *window);
-int	put_image(t_data *window);
+int		close_esc(int keycode, t_data *window);
+int		close_x(void);
+int 	len_map(t_data *window, char *path);
+int		put_image(t_data *window);
+void	free_map(char **map);
+int	close_map(t_data *window);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:53:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/20 18:56:18 by marolive         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:05:48 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42
@@ -61,5 +62,13 @@ size_t  gnl_strlen(const char *s);
 char	*gnl_strdup(const char *s1);
 size_t  gnl_strlcpy(char *dst, const char *src, size_t dstsize);
 char    *gnl_strjoin(char const *s1, char const *s2);
+
+int		ft_printf(const char *st, ...);
+int		ft_putnbr(int n);
+int		ft_putchar(int c);
+int		ft_putstr(char *s);
+int		ft_pointer(unsigned long n, char c);
+int		ft_put_hexa(unsigned int n, char c);
+int		ft_putnbr_u(unsigned int n);
 
 #endif

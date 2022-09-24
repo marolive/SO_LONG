@@ -35,7 +35,13 @@ SRCS = ft_isalnum.c \
 		ft_calloc.c \
 		ft_bzero.c \
 		get_next_line.c \
-		get_next_line_utils.c 
+		get_next_line_utils.c \
+		ft_pointer.c \
+		ft_printf.c \
+		ft_printfunc.c \
+		ft_put_hexa.c \
+		ft_putnbr_u.c \
+		ft_putnbr.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 RM = rm -f
