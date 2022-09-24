@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/24 18:41:36 by marolive         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:51:21 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int  len_map(t_data *window, char *path)
 {
     int fd;
     char *s;
-    char *x;
 
     window->line = 0;
-    x = ft_strrchr(path, '.');
     fd = open(path, O_RDONLY);
     if(fd < -1)
         return(0);
