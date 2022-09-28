@@ -1,8 +1,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdio.h>  //REMOVER
-
 #include "libft/libft.h"
 #include "mlx/mlx.h"
 #include <stdlib.h>
@@ -29,13 +27,23 @@ typedef struct s_data
 	char	**map;
 	int		img_width;
 	int		img_height;
+	int 	position_w;
+	int		position_h;
+	int		count_C;
+	int		count_E;
+	int		count_P;
 }			t_data;
 
 int		close_esc(int keycode, t_data *window);
-int		close_x(void);
+int		close_x(t_data *window);
 int 	len_map(t_data *window, char *path);
-int		put_image(t_data *window);
+void	put_image(t_data *window);
 void	free_map(char **map);
-int	close_map(t_data *window);
+int		close_map(t_data *window);
+void    valid_arq(int argc, char *argv);
+int   	init_window(t_data *window);
+void    count_elements(t_data *window);
+int		movements(int keycode, t_data *window);
+int		render_img(t_data *window);
 
 #endif

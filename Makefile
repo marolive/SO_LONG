@@ -2,6 +2,9 @@ NAME    = so_long
 SRCS    = so_long.c \
 			map.c \
 			put_img.c \
+			validation.c \
+			init_win.c \
+			events_key.c \
 			so_close.c
 MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a

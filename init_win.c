@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 16:34:23 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/28 20:26:31 by marolive         ###   ########.fr       */
+/*   Created: 2022/09/26 18:54:08 by marolive          #+#    #+#             */
+/*   Updated: 2022/09/26 19:02:01 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+int    init_window(t_data *window)
 {
-	t_data	window;
-	
-	valid_arq(argc, argv[1]);
-	len_map(&window, argv[1]);
-	init_window(&window);
-	put_image(&window);
-	render_img(&window);	
-	mlx_key_hook(window.win, movements, &window);
-	//mlx_key_hook(window.win, close_esc, &window);
-	mlx_hook(window.win, 17, 0, close_x, &window);
-	mlx_loop(window.mlx);
-	//close_map(&window);
+    window->mlx = mlx_init();
+	if(window->mlx == NULL)
+		return(0);
+	window->win = mlx_new_window(window->mlx, PIXEL * (window->col - 1), PIXEL * window->line, "Mini PickApple");
+	if(window->win == NULL)
+	{
+		free(window->win);
+		return(0);
+	}
+    return(0);
 }

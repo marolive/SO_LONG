@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/24 19:51:21 by marolive         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:36:48 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int  len_map(t_data *window, char *path)
 /*
 int v_map(t_data *window)
 {
-    if(window->map != "10PCE")  
-    if(window->map == 0)  
-    if(window->map = (width == height))
+    if(window->map == .ber)     !CHECK!
+    if(window->map != "10PCE")  !CHECK!
+    if(window->map == 0)        !CHECK!   
+    if(window->map = (w == h))
     if(window->map != 'C' == NULL) 
     
 }*/
