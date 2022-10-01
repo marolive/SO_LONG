@@ -8,6 +8,7 @@
 
 #define WALL "img/wall.xpm"
 #define PLAYER "img/player.xpm"
+#define PLAYER_L "img/player_l.xpm"
 #define	COLECT "img/colect.xpm"
 #define	BACKG "img/backg.xpm"
 #define EXIT "img/exit.xpm"
@@ -29,21 +30,20 @@ typedef struct s_data
 	int		img_height;
 	int 	position_w;
 	int		position_h;
-	int		count_C;
-	int		count_E;
-	int		count_P;
+	int		count_c;
+	int		count_e;
+	int		count_p;
 }			t_data;
 
-int		close_esc(int keycode, t_data *window);
-int		close_x(t_data *window);
 int 	len_map(t_data *window, char *path);
-void	put_image(t_data *window);
 void	free_map(char **map);
-int		close_map(t_data *window);
-void    valid_arq(int argc, char *argv);
-int   	init_window(t_data *window);
-void    count_elements(t_data *window);
-int		movements(int keycode, t_data *window);
+void	put_image(t_data *window);
 int		render_img(t_data *window);
+void    valid_arq(int argc, char *argv);
+void    count_elements(t_data *window);
+void    valid_elements(t_data *window);
+int   	init_window(t_data *window);
+int		movements(int keycode, t_data *window);
+int		close_x(t_data *window);
 
 #endif

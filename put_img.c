@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:19:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/09/28 20:16:00 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:46:56 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int render_img(t_data *window)
     while (j < window->line)
     {
         i = 0;
-        while(window->map[j][i] != '\0')
+        while(window->map[j][i])
         {
             if(window->map[j][i] == '1')
                 mlx_put_image_to_window(window->mlx, window->win, window->wall, PIXEL * i, PIXEL * j);

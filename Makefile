@@ -4,8 +4,7 @@ SRCS    = so_long.c \
 			put_img.c \
 			validation.c \
 			init_win.c \
-			events_key.c \
-			so_close.c
+			events_key.c
 MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 LIB_DIR = libft
