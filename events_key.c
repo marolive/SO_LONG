@@ -6,26 +6,44 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:06:54 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/01 20:42:56 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/05 01:11:52 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*int     move(t_data *window, int pos_w, int pos_h)
+void     move(t_data *window, int pos_w, int pos_h)
 {
     int new_w;
     int new_h;
 
     new_h = window->position_h;
     new_w = window->position_w;
-    if(window->map[pos_w][pos_h] == '0')
+    if (window->map[pos_w][pos_h] == 'C')
+        window->count_c--;
+    if (window->map[pos_w][pos_h] == 'E')
     {
-        
+        if(window->count_c != 0)
+            return(0);
+        else
+        {
+            ft_printf("You Win!\n");
+            //exit(0);
+            ft_printf("Press ESC or click in X button!\n");
+        }
     }
-}*/
+    window->position_h = pos_h;
+    window->position_w = pos_w;
+    window->map[new_w][new_h] = '0';
+    if (window->map[pos_w][pos_h] == '0')
+    {
+        window->map[pos_w][pos_h] = 'P';
+        window->count_move++;
+    }
+    ft_printf("%d\n", window->count_move);
+}
 
-int    movements(int keycode, t_data *window)
+int    press_key(int keycode, t_data *window)
 {
     if (keycode == 13)   //CIMA
     {

@@ -6,24 +6,24 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:40:43 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/01 20:06:36 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/04 23:37:05 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    valid_arq(int argc, char *argv)
+void    valid_arq(int c, char *arg)
 {
-    int     len;
+    int     len;   //VALIDAR
     char    *valid;
     
-    if(argc != 2)
+    if(c != 2)
     {
         ft_printf("Você é retardado por acaso?\n");
         exit(0);
     }
-    len = ft_strlen(argv);
-    if(!(valid = ft_strrchr(argv, '.')))
+    len = ft_strlen(arg); //VALIDAR
+    if(!(valid = ft_strrchr(arg, '.'))) //AJEITAR
     {
         ft_printf("Tem que ser aquivo .ber vacilao!\n");
         exit(0);
@@ -65,32 +65,41 @@ void    count_elements(t_data *window)
 void    valid_elements(t_data *window)
 {
     count_elements(window);
+    if(!ft_strchr("10PCE", count_elements))
+    {
+        ft_printf("Tá difícil né, assim não pode!");
+        exit(0);
+    }
     if(window->count_c < 1 || window->count_e != 1 || window->count_p != 1)
     {
         ft_printf("Assim não da né Combatente!!");
         exit(0);
     }
-    /*if(window->map[0][0] != '1' || window->map[][])*/
 }
-/*
-int bar(char **map, size_t width, size_t height)
+
+int valid_wall(t_data *window, int width, int height)
 {
-    size_t  i;
+    int  i;
 
     i = 0;
     while (i < width)
     {
-        if (map[0][i] != '1' || map[height-1][i] != '1')
+        if (window->map[0][i] != '1' && window->map[height-1][i] != '1')
+        {
+            ft_printf("Mapa invalido doidão, se liga!!");
             return (0);
+        }
         i++;
     }
     i = 0;
     while (i < height)
     {
-        if (map[i][0] != '1' || map[i][width - 1] != '1')
+        if (window->map[i][0] != '1' && window->map[i][width - 1] != '1')
+        {
+            ft_printf("Mapa invalido doidão, se liga!!");
             return (0);
+        }
         i++;
     }
     return (1);
 }
-*/

@@ -14,6 +14,11 @@
 #define EXIT "img/exit.xpm"
 #define PIXEL 64
 
+#define KEY_UP 13
+#define KEY_DOWN 1
+#define KEY_LEFT 0
+#define KEY_RIGHT 2
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -33,17 +38,20 @@ typedef struct s_data
 	int		count_c;
 	int		count_e;
 	int		count_p;
+	int		count_move;
 }			t_data;
 
 int 	len_map(t_data *window, char *path);
 void	free_map(char **map);
 void	put_image(t_data *window);
 int		render_img(t_data *window);
-void    valid_arq(int argc, char *argv);
+void    valid_arq(int c, char *arg);
 void    count_elements(t_data *window);
 void    valid_elements(t_data *window);
+int		valid_wall(t_data *window, int width, int height);
 int   	init_window(t_data *window);
-int		movements(int keycode, t_data *window);
+void    move(t_data *window, int pos_w, int pos_h);
+int		press_key(int keycode, t_data *window);
 int		close_x(t_data *window);
 
 #endif

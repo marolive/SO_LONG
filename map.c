@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/01 16:44:28 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:41:07 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int  len_map(t_data *window, char *path)
         return(0);
     s = get_next_line(fd);
     window->col = ft_strlen(s);
-    window->map = ft_calloc(window->col, sizeof(char *));
+    ft_printf("%d\n", window->col);
+    window->map = ft_calloc(window->col, sizeof(char *)); //CONFERIR (col == -1)
     window->map[window->line] = s;
     while(s)
     {
