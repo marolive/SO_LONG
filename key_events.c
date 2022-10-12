@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_key.c                                       :+:      :+:    :+:   */
+/*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:06:54 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/07 20:54:28 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:51:04 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void     move(t_data *window, int pos_w, int pos_h)
     if (window->map[pos_w][pos_h] == 'E')
     {
         window->finish = 1;
-        ft_printf("\nYEAH !! You Win!\nPress ESC or click in X button!\n");
+        ft_printf("\nYEAH !! You Win!\n");
+        exit(0);
     }
     window->position_h = pos_h;
     window->position_w = pos_w;
     window->map[new_w][new_h] = '0';   
-    if(!window->finish)
+    if (!window->finish)
     {
         window->map[pos_w][pos_h] = 'P';
         ft_printf("Steps: %d\n", ++window->count_move);
@@ -43,31 +44,33 @@ void     move(t_data *window, int pos_w, int pos_h)
 
 int    press_key(int keycode, t_data *window)
 {
-    if (keycode == 13)   //CIMA
+    if (keycode == KEY_UP)   //CIMA
     {
-        mlx_destroy_image(window->mlx, window->player);
-        window->player = mlx_xpm_file_to_image(window->mlx, PLAYER, &window->img_width, &window->img_height);
+        new_img(window, PLAYER);
         move(window, window->position_w - 1, window->position_h);
     }
-    if (keycode == 1)   //BAIXO
+    if (keycode == KEY_DOWN)   //BAIXO
     {
-        mlx_destroy_image(window->mlx, window->player);
-        window->player = mlx_xpm_file_to_image(window->mlx, PLAYER, &window->img_width, &window->img_height);
+        new_img(window, PLAYER);
         move(window, window->position_w + 1, window->position_h);
     }
-    if (keycode == 0)   //ESQUERDA
+    if (keycode == KEY_LEFT)   //ESQUERDA
     {   
-        mlx_destroy_image(window->mlx, window->player);
-        window->player = mlx_xpm_file_to_image(window->mlx, PLAYER_L, &window->img_width, &window->img_height);
+        new_img(window, PLAYER_L);
         move(window, window->position_w, window->position_h - 1);
     }
-    if (keycode == 2)   //DIREITA
+    if (keycode == KEY_RIGHT)   //DIREITA
     {
-        mlx_destroy_image(window->mlx, window->player);
-        window->player = mlx_xpm_file_to_image(window->mlx, PLAYER, &window->img_width, &window->img_height);
+        new_img(window, PLAYER);
         move(window, window->position_w, window->position_h + 1);
     }
-    if (keycode == 53)
+    if (keycode == ESC)
+        close_esc(window);
+    return(0);
+}
+
+void    close_esc(t_data *window)
+{
 	{
 		mlx_destroy_image(window->mlx, window->player);
 		mlx_destroy_image(window->mlx, window->wall);
@@ -75,12 +78,10 @@ int    press_key(int keycode, t_data *window)
 		mlx_destroy_image(window->mlx, window->exit);
 		mlx_destroy_image(window->mlx, window->backg);
 		mlx_destroy_window(window->mlx, window->win);
-		ft_printf("Keypress: %d\n", keycode); 
 		free(window->mlx);
 		free_map(window->map);       //REMOVER
 		exit(0);
 	}
-    return(0);
 }
 
 int close_x(t_data *window)

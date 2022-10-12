@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:19:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/07 19:59:30 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:25:09 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,37 @@ int render_img(t_data *window)
         j++;
     }
     return(0);
+}
+
+void new_img(t_data *window, char *img)
+{
+    mlx_destroy_image(window->mlx, window->player);
+    window->player = mlx_xpm_file_to_image(window->mlx, img, &window->img_width, &window->img_height);
+}
+
+void    count_elements(t_data *window)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(window->map[i])
+    {
+        j = 0;
+        while(window->map[i][j])
+        {
+            if(window->map[i][j] == 'C')
+                window->count_c++;
+            if(window->map[i][j] == 'E')
+                window->count_e++;
+            if(window->map[i][j] == 'P')
+            {
+                window->position_w = i;
+                window->position_h = j;
+                window->count_p++;
+            }
+            j++;
+        }
+        i++;
+    }
 }

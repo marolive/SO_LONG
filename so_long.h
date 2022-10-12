@@ -18,6 +18,7 @@
 #define KEY_DOWN 1
 #define KEY_LEFT 0
 #define KEY_RIGHT 2
+#define ESC 53
 
 typedef struct s_data
 {
@@ -55,5 +56,8 @@ void    move(t_data *window, int pos_w, int pos_h);
 int		press_key(int keycode, t_data *window);
 int		close_x(t_data *window);
 void    valid_wall(t_data *window);
+void	new_img(t_data *window, char *img);
+void    close_esc(t_data *window);
+void    valid_exit(char **copy_map, int pw, int ph);
 
 #endif

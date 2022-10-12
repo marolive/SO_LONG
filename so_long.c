@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:34:23 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/11 22:09:23 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:58:48 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 	
 	valid_arq(argc, argv[1]);
 	len_map(&window, argv[1]);
+	valid_exit(window.map, window.position_w, window.position_h);
 	valid_elements(&window);
 	valid_char(&window);
 	valid_wall(&window);
@@ -25,7 +26,6 @@ int	main(int argc, char *argv[])
 	put_image(&window);
 	render_img(&window);	
 	mlx_key_hook(window.win, press_key, &window);
-	//mlx_key_hook(window.win, close_esc, &window);
 	mlx_hook(window.win, 17, 0, close_x, &window);
 	mlx_loop(window.mlx);
 	//close_map(&window);
