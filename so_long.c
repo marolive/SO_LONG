@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:34:23 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/04 22:41:04 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:09:23 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char *argv[])
 	valid_arq(argc, argv[1]);
 	len_map(&window, argv[1]);
 	valid_elements(&window);
-	valid_wall(&window, window.line, window.col);
+	valid_char(&window);
+	valid_wall(&window);
 	init_window(&window);
 	put_image(&window);
 	render_img(&window);	

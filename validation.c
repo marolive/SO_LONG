@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:40:43 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/04 23:37:05 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:42:33 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    valid_arq(int c, char *arg)
 {
-    int     len;   //VALIDAR
+    //int     len;   //VALIDAR
     char    *valid;
     
     if(c != 2)
@@ -22,7 +22,7 @@ void    valid_arq(int c, char *arg)
         ft_printf("Você é retardado por acaso?\n");
         exit(0);
     }
-    len = ft_strlen(arg); //VALIDAR
+    //len = ft_strlen(arg); //VALIDAR
     if(!(valid = ft_strrchr(arg, '.'))) //AJEITAR
     {
         ft_printf("Tem que ser aquivo .ber vacilao!\n");
@@ -60,16 +60,10 @@ void    count_elements(t_data *window)
         }
         i++;
     }
-    
 }
 void    valid_elements(t_data *window)
 {
     count_elements(window);
-    if(!ft_strchr("10PCE", count_elements))
-    {
-        ft_printf("Tá difícil né, assim não pode!");
-        exit(0);
-    }
     if(window->count_c < 1 || window->count_e != 1 || window->count_p != 1)
     {
         ft_printf("Assim não da né Combatente!!");
@@ -77,29 +71,61 @@ void    valid_elements(t_data *window)
     }
 }
 
-int valid_wall(t_data *window, int width, int height)
+int    valid_char(t_data *window)
 {
-    int  i;
+    int i;
+    int j;
 
     i = 0;
-    while (i < width)
+    while(window->map[i])
     {
-        if (window->map[0][i] != '1' && window->map[height-1][i] != '1')
+        j = 0;
+        while(window->map[i][j])
         {
-            ft_printf("Mapa invalido doidão, se liga!!");
-            return (0);
+            if(!ft_strchr("10PEC\n", window->map[i][j]))
+            {
+                ft_printf("Mapa invalido doidão!!");
+                exit(0);
+            }
+            j++;
         }
         i++;
     }
+    return(0);
+}
+void    valid_wall(t_data *window)
+{
+    int  i;
+    int  j;
+
     i = 0;
-    while (i < height)
+    while (i < window->line)
     {
-        if (window->map[i][0] != '1' && window->map[i][width - 1] != '1')
+        j = 0;
+        while (window->map[i][j] != '\n')
         {
-            ft_printf("Mapa invalido doidão, se liga!!");
-            return (0);
+            if ((window->map[0][j] != '1' || window->map[window->line - 1][j] != '1') || (window->map[i][0] != '1' || window->map[i][window->col - 2] != '1'))
+            {
+                ft_printf("Mapa invalido doidão, se liga!!");
+                exit(0);
+            }
+            j++;
         }
         i++;
     }
-    return (1);
+    /*i = 0;
+    while (i < window->line - 1)
+    {
+        j = 0;
+        while (window->map[i][j] != '\n')
+        {
+            if (window->map[i][0] != '1' || window->map[i][window->col - 2] != '1')
+            {
+                ft_printf("Mapa invalido doidão, se liga!!");
+                exit(0);
+            }
+            j++;
+        }
+        i++;
+    }*/
 }

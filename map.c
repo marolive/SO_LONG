@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/04 22:41:07 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:39:26 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int  len_map(t_data *window, char *path)
 {
-    int fd;
-    char *s;
+    int     fd;
+    char    *s;
+    int     size;
 
+    size = 0;
     window->line = 0;
     fd = open(path, O_RDONLY);
     if(fd < -1)
         return(0);
     s = get_next_line(fd);
     window->col = ft_strlen(s);
-    ft_printf("%d\n", window->col);
     window->map = ft_calloc(window->col, sizeof(char *)); //CONFERIR (col == -1)
     window->map[window->line] = s;
     while(s)
@@ -32,6 +33,13 @@ int  len_map(t_data *window, char *path)
         s = get_next_line(fd);
         window->map[++window->line] = s;
     }
+    size = window->line;
+    if(size == window->col - 1)
+    {
+        ft_printf("Mapa quadrado igual a você!!");
+        exit(0);
+    }
+    ft_printf("linhas: %d\n", window->line);
     return(1);
 }
 

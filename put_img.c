@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:19:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/01 16:46:56 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:59:30 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int render_img(t_data *window)
             else if(window->map[j][i] == 'C')
                 mlx_put_image_to_window(window->mlx, window->win, window->colect, PIXEL * i, PIXEL * j);
             else if(window->map[j][i] == 'E')
-                mlx_put_image_to_window(window->mlx, window->win, window->exit, PIXEL * i, PIXEL * j);
+            {
+                if(window->count_c != 0)
+                    mlx_put_image_to_window(window->mlx, window->win, window->backg, PIXEL * i, PIXEL * j);
+                if(window->count_c == 0)
+                    mlx_put_image_to_window(window->mlx, window->win, window->exit, PIXEL * i, PIXEL * j);
+            }
             i++;
         }
         j++;

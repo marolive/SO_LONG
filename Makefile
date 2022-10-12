@@ -14,10 +14,10 @@ CC	    = cc
 RM	    = rm -f
 CFLAGS  = -Wall -Werror -Wextra
 
-all: $(NAME)
+all: $(NAME) 
 
 $(NAME): $(OBJS) $(MLX) $(LIB)
-	$(CC) $^ -L $(MLX_DIR) -l $(MLX_DIR) -framework OpenGL -framework AppKit -o $@
+	$(CC) $^ -L $(MLX_DIR) -l $(MLX_DIR) -framework OpenGL -framework AppKit -g -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(MLX_DIR) -c $< -o $(<:.c=.o)
