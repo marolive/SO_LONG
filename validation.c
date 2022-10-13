@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:40:43 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/12 19:12:42 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:38:14 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,33 +91,29 @@ void    valid_wall(t_data *window)
     }
 }
 
-void    valid_exit(char **copy_map, int pw, int ph)
+void    valid_exit(t_data  *window, int pw, int ph)
 {
-    t_data  window;
-    //char    **copy_map;
-    //copy_map = window.map;
+    char    **copy_map;
+    copy_map = window->map;
     int     i;
         
     i = 0;
-    while(i < window.line)
+    while(i < window->line)
     {
         ft_printf("%s", copy_map[i]);
         i++;
     }
-    /*if (copy_map[pw][ph] == '1')
+    if (copy_map[pw][ph] == '1')
         return ;
     if (copy_map[pw][ph] == 'C')
-        window.count_C--;
+        window->count_c++;
     if (copy_map[pw][ph] == 'E')
-        window.count_e++;
-    //copy_map[pw][ph] = 'P';
-    valid_exit(copy_map, pw - 1, ph);
-    valid_exit(copy_map, pw + 1, ph);
-    valid_exit(copy_map, pw, ph - 1);
-    valid_exit(copy_map, pw, ph + 1);
-    if (window.count_C != 0)
-    {
-        ft_printf("Tá errado esse mapa ai!\n");
-        exit(0);
-    }*/
+        window->count_e++;
+    copy_map[pw][ph] = '1';
+    valid_exit(window, pw - 1, ph);
+    valid_exit(window, pw + 1, ph);
+    valid_exit(window, pw, ph - 1);
+    valid_exit(window, pw, ph + 1);
+    ft_printf("Tá errado esse mapa ai!\n");
+    exit(0);
 }

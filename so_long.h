@@ -58,6 +58,6 @@ int		close_x(t_data *window);
 void    valid_wall(t_data *window);
 void	new_img(t_data *window, char *img);
 void    close_esc(t_data *window);
-void    valid_exit(char **copy_map, int pw, int ph);
+void    valid_exit(t_data *window, int pw, int ph);
 
 #endif
