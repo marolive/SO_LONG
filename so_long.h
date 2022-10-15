@@ -32,15 +32,22 @@ typedef struct s_data
 	int		col;
 	int		line;
 	char	**map;
+	char	**copy_map;
 	int		img_width;
 	int		img_height;
 	int 	position_w;
 	int		position_h;
+	int		play_pos_w;
+	int		play_pos_h;
+	int		pos_exit_w;
+	int		pos_exit_h;
 	int		count_c;
 	int		count_e;
 	int		count_p;
+	int		count_copy_c;
 	int		count_move;
 	int		finish;
+	int		size_map;
 }			t_data;
 
 int 	len_map(t_data *window, char *path);
@@ -58,6 +65,13 @@ int		close_x(t_data *window);
 void    valid_wall(t_data *window);
 void	new_img(t_data *window, char *img);
 void    close_esc(t_data *window);
-void    valid_exit(t_data *window, int pw, int ph);
+void    valid_exit(t_data *window);
+void    valid_collect(t_data *window);
+void    print_winner(t_data *window);
+int		render_map(t_data *window, char *path);
+void    fake_move(t_data  *window, int pw, int ph);
+int   	copy_map(t_data *window);
+void 	initial_value(t_data *window);
+void    copy_elements(t_data *window);
 
 #endif

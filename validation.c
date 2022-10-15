@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:40:43 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/13 18:38:14 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/15 07:32:43 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 void    valid_arq(int c, char *arg)
 {
     char    *valid;
-    //char    *len;
-    
-    //len = ft_strlen(arg);
+
     if(c != 2)
     {
         ft_printf("Você é retardado por acaso?\n");
         exit(0);
     }
-   // if (len - 4 == NULL)
     valid = ft_strchr(arg, '.');
     if(!valid)
     {
@@ -91,29 +88,3 @@ void    valid_wall(t_data *window)
     }
 }
 
-void    valid_exit(t_data  *window, int pw, int ph)
-{
-    char    **copy_map;
-    copy_map = window->map;
-    int     i;
-        
-    i = 0;
-    while(i < window->line)
-    {
-        ft_printf("%s", copy_map[i]);
-        i++;
-    }
-    if (copy_map[pw][ph] == '1')
-        return ;
-    if (copy_map[pw][ph] == 'C')
-        window->count_c++;
-    if (copy_map[pw][ph] == 'E')
-        window->count_e++;
-    copy_map[pw][ph] = '1';
-    valid_exit(window, pw - 1, ph);
-    valid_exit(window, pw + 1, ph);
-    valid_exit(window, pw, ph - 1);
-    valid_exit(window, pw, ph + 1);
-    ft_printf("Tá errado esse mapa ai!\n");
-    exit(0);
-}

@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/13 18:42:13 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/15 07:41:57 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@ int  len_map(t_data *window, char *path)
     char    *s;
     int     size;
 
-    size = 0;
     window->line = 0;
     fd = open(path, O_RDONLY);
-    if(fd < -1)
-        return(0);
+    if(fd < 0)
+    {
+        ft_printf("Mapa não existe!\n");
+        exit(0);
+    }
     s = get_next_line(fd);
     window->col = ft_strlen(s);
-    window->map = ft_calloc(window->col, sizeof(char *));
+    window->map = ft_calloc(window->size_map + 1, sizeof(char *));
     window->map[window->line] = s;
     while(s)
     {
-        //ft_printf("%s", window->map[window->line]); // REMOVER
         s = get_next_line(fd);
         window->map[++window->line] = s;
     }
@@ -54,3 +55,63 @@ void    free_map(char **map)
 	}
 	free(map);
 }
+
+void    fake_move(t_data  *window, int pw, int ph)
+{   
+    if (window->copy_map[pw][ph] == 'C' || window->copy_map[pw][ph] == '0')
+    {
+        if (window->copy_map[pw][ph] == 'C')
+            window->count_copy_c--;
+        window->copy_map[pw][ph] = 'P';
+        fake_move(window, pw - 1, ph);
+        fake_move(window, pw + 1, ph);
+        fake_move(window, pw, ph - 1);
+        fake_move(window, pw, ph + 1);
+    }
+}
+
+int   copy_map(t_data *window)
+{
+    int i;
+
+    i = 0;
+    window->copy_map = ft_calloc(window->size_map + 1, sizeof (char *));
+    if (!window->copy_map)
+        return (0);
+    while(i < window->line)
+    {
+        window->copy_map[i] = ft_strdup(window->map[i]);
+        //ft_printf("%s", window->map[i]);
+        i++;
+    }
+    window->copy_map[window->play_pos_w][window->play_pos_h] = '0';
+    fake_move(window, window->play_pos_w, window->play_pos_h);
+    return(1);
+}
+
+void     valid_collect(t_data *window)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while(i < window->line)
+    {
+        j = 0;
+        while(window->map[i][j])
+        {
+            if(window->map[i][j] == 'C')
+                window->count_copy_c++;
+            j++;
+        }
+        i++;
+        
+    }
+    //ft_printf("coletaveis: %d\n", window->count_copy_c);
+    if(window->count_copy_c != 0)
+    {
+        ft_printf("Coletavel preso!\n");
+        exit(0);
+    }
+}
+

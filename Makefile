@@ -4,7 +4,8 @@ SRCS    = so_long.c \
 			put_img.c \
 			validation.c \
 			win_init.c \
-			key_events.c
+			key_events.c \
+			initial_values.c
 MLX_DIR = mlx
 MLX = $(MLX_DIR)/libmlx.a
 LIB_DIR = libft
@@ -23,7 +24,7 @@ $(NAME): $(OBJS) $(MLX) $(LIB)
 	$(CC) $(CFLAGS) -I $(MLX_DIR) -c $< -o $(<:.c=.o)
 
 $(MLX):
-	make all -C $(MLX_DIR)
+	make all -C $(MLX_DIR) &> /dev/null
 
 $(LIB):
 	make all -C $(LIB_DIR)

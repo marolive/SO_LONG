@@ -50,12 +50,12 @@ CFLAGS = -Wall -Wextra -Werror
 
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(HEADER) $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

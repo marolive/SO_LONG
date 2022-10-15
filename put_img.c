@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:19:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/13 18:37:26 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/15 07:30:16 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,7 @@ void    count_elements(t_data *window)
             if(window->map[i][j] == 'E')
                 window->count_e++;
             if(window->map[i][j] == 'P')
-            {
-                window->position_w = i;
-                window->position_h = j;
                 window->count_p++;
-            }
             j++;
         }
         i++;
