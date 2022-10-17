@@ -25,7 +25,7 @@ static char	*buf_line(int fd, char *line)
 	{
 		count = read(fd, buffer, BUFFER_SIZE);
 		if (count < 0)
-			break;
+			break ;
 		buffer[count] = '\0';
 		line = gnl_strjoin(line, buffer);
 	}
@@ -43,7 +43,7 @@ static char	*get_line(char *line)
 	if (!*line)
 		return (NULL);
 	i = 0;
-	while (line[i]  && line[i] != '\n')
+	while (line[i] && line[i] != '\n')
 		i++;
 	malline = (char *)malloc(sizeof(char) * (i + 2));
 	if (!malline)
