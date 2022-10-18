@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:54:08 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/17 14:01:37 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:09:29 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	init_window(t_data *window)
 {
 	window->mlx = mlx_init();
 	if (window->mlx == NULL)
+	{
+		free(window->mlx);
 		return (0);
+	}
 	window->win = mlx_new_window(window->mlx, PX * (window->col - 1),
 			PX * window->line, "Mini PickApple");
 	if (window->win == NULL)
@@ -37,7 +40,7 @@ int	render_map(t_data *window, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Mapa não existe!\n");
+		ft_printf("Map does not exist!\n");
 		exit(0);
 	}
 	s = get_next_line(fd);
@@ -47,6 +50,7 @@ int	render_map(t_data *window, char *path)
 		s = get_next_line(fd);
 		size++;
 	}
+	free(s);
 	window->size_map = size;
 	return (1);
 }

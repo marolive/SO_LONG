@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:38:45 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/17 17:38:46 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:21:40 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_data
 	int		size_map;
 }			t_data;
 
-int		len_map(t_data *window, char *path);
+void	len_map(t_data *window, char *path);
 void	free_map(char **map);
 void	put_image(t_data *window);
 void	render_img(t_data *window);

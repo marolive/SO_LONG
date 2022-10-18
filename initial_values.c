@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 05:57:32 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/15 07:51:31 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:54:02 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	initial_value(t_data *window)
 {
+	window->line = 0;
 	window->count_c = 0;
 	window->count_e = 0;
 	window->count_p = 0;
@@ -56,7 +57,7 @@ void	valid_exit(t_data *window)
 		&& window->copy_map[window->pos_exit_w][window->pos_exit_h - 1] != 'P'
 		&& window->copy_map[window->pos_exit_w][window->pos_exit_h + 1] != 'P')
 	{
-		ft_printf("Mapa sem saida Zé mané, se liga!!\n");
+		ft_printf("Map without exit!!\n");
 		exit(0);
 	}
 }

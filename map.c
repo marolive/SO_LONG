@@ -6,13 +6,13 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:16:22 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/15 07:41:57 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:57:47 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	len_map(t_data *window, char *path)
+void	len_map(t_data *window, char *path)
 {
 	int		fd;
 	char	*s;
@@ -21,7 +21,7 @@ int	len_map(t_data *window, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Mapa não existe!\n");
+		ft_printf("Map does not exist!\n");
 		exit(0);
 	}
 	s = get_next_line(fd);
@@ -35,10 +35,10 @@ int	len_map(t_data *window, char *path)
 	}
 	if (window->line == window->col - 1)
 	{
-		ft_printf("Mapa quadrado igual a você!!\n");
+		ft_printf("Please insert a rectangular map!!\n");
 		exit(0);
 	}
-	return (1);
+	free(s);
 }
 
 void	free_map(char **map)
@@ -83,6 +83,7 @@ int	copy_map(t_data *window)
 	}
 	window->copy_map[window->play_pos_w][window->play_pos_h] = '0';
 	fake_move(window, window->play_pos_w, window->play_pos_h);
+	free_map(window->copy_map);
 	return (1);
 }
 
@@ -105,7 +106,7 @@ void	valid_collect(t_data *window)
 	}
 	if (window->count_copy_c != 0)
 	{
-		ft_printf("Coletavel preso!\n");
+		ft_printf("No access to collectible!\n");
 		exit(0);
 	}
 }
