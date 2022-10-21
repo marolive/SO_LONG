@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initial_values.c                                   :+:      :+:    :+:   */
+/*   valid_arq.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 05:57:32 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/21 01:41:49 by marolive         ###   ########.fr       */
+/*   Created: 2022/09/26 18:40:43 by marolive          #+#    #+#             */
+/*   Updated: 2022/10/21 01:00:37 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	initial_value(t_data *window)
+void	valid_arq(int c, char *arg)
 {
-	window->col = 0;
-	window->line = 0;
-	window->img_h = 0;
-	window->img_w = 0;
-	window->position_w = 0;
-	window->position_h = 0;
-	window->play_pos_w = 0;
-	window->play_pos_h = 0;
-	window->pos_exit_w = 0;
-	window->pos_exit_h = 0;
-	window->size_line = 0;
-	window->count_c = 0;
-	window->count_e = 0;
-	window->count_p = 0;
-	window->count_copy_c = 0;
-	window->count_move = 0;
-	window->finish = 0;
+	char	*valid;
+
+	if (c != 2)
+		print_error("Wrong number of arguments!\n");
+	valid = ft_strrchr(arg, '.');
+	if (!valid)
+		print_error("Only .ber files!\n");
+	if (ft_strncmp(valid, ".ber", 4) != 0 || ft_strlen(valid) != 4)
+		print_error("Only .ber files!\n");
 }

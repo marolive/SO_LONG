@@ -1,8 +1,10 @@
 NAME    = so_long
 SRCS    = so_long.c \
 			map.c \
+			map_copy.c \
+			valid_arq.c \
 			put_img.c \
-			validation.c \
+			validations.c \
 			win_init.c \
 			key_events.c \
 			initial_values.c

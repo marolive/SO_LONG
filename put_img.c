@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:19:42 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/17 14:46:22 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/21 02:50:26 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	put_image(t_data *wd)
 	wd->colect = mlx_xpm_file_to_image(wd->mlx, COLECT, &wd->img_w, &wd->img_h);
 	wd->backg = mlx_xpm_file_to_image(wd->mlx, BACKG, &wd->img_w, &wd->img_h);
 	wd->exit = mlx_xpm_file_to_image(wd->mlx, EXIT, &wd->img_w, &wd->img_h);
+}
+
+void	next_img(t_data *window, char *img, int i, int j)
+{
+	mlx_put_image_to_window(window->mlx, window->win, img, i, j);
 }
 
 void	render_img(t_data *window)
@@ -50,12 +55,6 @@ void	render_img(t_data *window)
 	}
 }
 
-void	new_img(t_data *wd, char *img)
-{
-	mlx_destroy_image(wd->mlx, wd->player);
-	wd->player = mlx_xpm_file_to_image(wd->mlx, img, &wd->img_w, &wd->img_h);
-}
-
 void	count_elements(t_data *window)
 {
 	int	i;
@@ -77,9 +76,12 @@ void	count_elements(t_data *window)
 		}
 		i++;
 	}
+	if (window->count_c < 1 || window->count_e != 1 || window->count_p != 1)
+		print_error("Irregular number of characters!!\n");
 }
 
-void	next_img(t_data *window, char *img, int i, int j)
+void	new_img(t_data *wd, char *img)
 {
-	mlx_put_image_to_window(window->mlx, window->win, img, i, j);
+	mlx_destroy_image(wd->mlx, wd->player);
+	wd->player = mlx_xpm_file_to_image(wd->mlx, img, &wd->img_w, &wd->img_h);
 }
