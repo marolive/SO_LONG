@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:34:23 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/21 03:38:18 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/21 06:14:38 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	main(int argc, char *argv[])
 	render_map(&window, argv[1]);
 	count_elements(&window);
 	copy_elements(&window);
+	valid_square(&window);
 	valid_char(&window);
 	valid_wall(&window);
 	copy_map(&window);
 	valid_collect(&window);
 	valid_exit(&window);
-	valid_square(&window);
 	init_window(&window);
 	put_image(&window);
 	render_img(&window);

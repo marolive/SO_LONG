@@ -6,7 +6,7 @@
 /*   By: marolive <marolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 05:57:32 by marolive          #+#    #+#             */
-/*   Updated: 2022/10/21 01:41:49 by marolive         ###   ########.fr       */
+/*   Updated: 2022/10/21 05:51:30 by marolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,11 @@ void	initial_value(t_data *window)
 	window->count_copy_c = 0;
 	window->count_move = 0;
 	window->finish = 0;
+}
+
+void	print_error(char *s)
+{
+	ft_printf("-- ERROR --\n");
+	perror(s);
+	exit (0);
 }
